@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday, My Love! 💖</title>
+  
+  <!-- Unique Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Cherry+Bomb+One&family=Dancing+Script:wght@700&family=Great+Vibes&family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Quicksand:wght@500;600;700&family=Shrikhand&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons for Overkill Cuteness -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Canvas Confetti Library -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Floating Ambient Particles Canvas -->
+  <canvas id="sparkle-canvas"></canvas>
+
+  <!-- Cute Heart Audio Controller (Floating Vinyl Player) -->
+  <div class="music-player-pill" id="musicPlayer" title="Click to play/pause 'Be My Baby'">
+    <div class="vinyl-disc" id="vinylDisc">
+      <div class="vinyl-inner">💖</div>
+    </div>
+    <div class="music-info">
+      <div class="music-title">Be My Baby</div>
+      <div class="music-artist">The Ronettes 🎵</div>
+    </div>
+    <button class="music-btn" id="playBtn" aria-label="Play or pause music">
+      <i class="fa-solid fa-play" id="playIcon"></i>
+    </button>
+  </div>
+
+  <!-- Audio Element with Fallback Vintage Stream & Local File Option -->
+  <audio id="bgMusic" loop preload="auto">
+    <!-- User can drop 'be-my-baby.mp3' directly in folder -->
+    <source src="assets/be-my-baby.mp3" type="audio/mpeg">
+    <!-- High quality classic audio stream backup -->
+    <source src="https://ia800903.us.archive.org/11/items/the-ronettes-be-my-baby/The%20Ronettes%20-%20Be%20My%20Baby.mp3" type="audio/mpeg">
+    Your browser does not support audio playback.
+  </audio>
+
+  <!-- Cute Interactive Entrance Modal (Browser Audio Policy Workaround) -->
+  <div class="entrance-overlay" id="entranceModal">
+    <div class="entrance-card">
+      <div class="bow-badge">🎀 A Special Delivery 🎀</div>
+      <div class="heart-pulse-icon">💌</div>
+      <h1 class="font-bubble">Happy Birthday, Gorgeous!</h1>
+      <p class="font-sweet">I built a whole little world just for you. Put your headphones on, turn your sound up, and step inside...</p>
+      <button class="pink-glow-btn" id="enterSiteBtn">
+        <span>Tap to Open My Heart 💖</span>
+        <i class="fa-solid fa-wand-magic-sparkles"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Main Website Container -->
+  <div class="site-wrapper">
+    
+    <!-- Top Navigation Ribbon / Page Jumpers -->
+    <header class="top-nav">
+      <div class="nav-brand font-romantic">Only for You 💕</div>
+      <nav class="nav-links">
+        <a href="#hero" class="nav-item active"><i class="fa-solid fa-cake-candles"></i> Wish</a>
+        <a href="#counter" class="nav-item"><i class="fa-solid fa-heart-pulse"></i> Love Clock</a>
+        <a href="#letter" class="nav-item"><i class="fa-solid fa-envelope-open-text"></i> Letter</a>
+        <a href="#gallery" class="nav-item"><i class="fa-solid fa-camera-retro"></i> Memories</a>
+        <a href="#reasons" class="nav-item"><i class="fa-solid fa-star"></i> 10 Reasons</a>
+        <a href="#cake" class="nav-item"><i class="fa-solid fa-birthday-cake"></i> Cake</a>
+        <a href="#date-proposal" class="nav-item finale-link"><i class="fa-solid fa-ring"></i> The Question ✨</a>
+      </nav>
+    </header>
+
+    <!-- SECTION 1: HERO / BIRTHDAY STAGE -->
+    <section class="section hero-section" id="hero">
+      <div class="ribbon-tag">✨ IT'S YOUR SPECIAL DAY ✨</div>
+      <h1 class="main-title font-bubble">
+        Happy Birthday, <br>
+        <span class="gradient-text font-script name-placeholder">My Favorite Person!</span>
+      </h1>
+      
+      <p class="hero-tagline font-sweet">
+        The universe got a whole lot sweeter the day you were born. Here is a little corner of the internet dedicated completely to you. 🌸
+      </p>
+
+      <div class="hero-stickers-row">
+        <span class="cute-badge badge-1"><i class="fa-solid fa-crown"></i> 100% Certified Angel</span>
+        <span class="cute-badge badge-2"><i class="fa-solid fa-sparkles"></i> Loveliest Smile</span>
+        <span class="cute-badge badge-3"><i class="fa-solid fa-heart"></i> My Forever Favorite</span>
+      </div>
+
+      <div class="scroll-prompt">
+        <span>Scroll down for surprises</span>
+        <i class="fa-solid fa-chevron-down bounce"></i>
+      </div>
+    </section>
+
+
+    <!-- SECTION 2: RELATIONSHIP / LOVE COUNTER -->
+    <section class="section counter-section" id="counter">
+      <div class="section-header">
+        <span class="section-pill"><i class="fa-solid fa-infinity"></i> Forever & Always</span>
+        <h2 class="section-title font-bubble">Every Second With You</h2>
+        <p class="section-sub">Counting every magical moment since you entered my life</p>
+      </div>
+
+      <div class="counter-box glass-panel">
+        <div class="counter-label font-romantic">We've been smiling together for:</div>
+        
+        <div class="time-grid">
+          <div class="time-card">
+            <span class="time-num font-bubble" id="daysCount">0</span>
+            <span class="time-unit">Days</span>
+          </div>
+          <div class="time-card">
+            <span class="time-num font-bubble" id="hoursCount">00</span>
+            <span class="time-unit">Hours</span>
+          </div>
+          <div class="time-card">
+            <span class="time-num font-bubble" id="minsCount">00</span>
+            <span class="time-unit">Minutes</span>
+          </div>
+          <div class="time-card">
+            <span class="time-num font-bubble" id="secsCount">00</span>
+            <span class="time-unit">Seconds</span>
+          </div>
+        </div>
+
+        <div class="counter-footnote">
+          <i class="fa-solid fa-sparkles"></i> ...and I’d choose you in every lifetime.
+        </div>
+      </div>
+    </section>
+
+
+    <!-- SECTION 3: INTERACTIVE LOVE LETTER / WAX SEAL ENVELOPE -->
+    <section class="section letter-section" id="letter">
+      <div class="section-header">
+        <span class="section-pill"><i class="fa-solid fa-envelope"></i> Sealed with a Kiss</span>
+        <h2 class="section-title font-bubble">A Letter From My Heart</h2>
+        <p class="section-sub">Click the wax seal on the envelope to open it 💌</p>
+      </div>
+
+      <div class="envelope-container" id="envelopeWrapper">
+        <div class="envelope" id="envelope">
+          <div class="envelope-back"></div>
+          
+          <!-- Sliding Heartfelt Letter Inside -->
+          <div class="letter-paper" id="letterPaper">
+            <div class="letter-inner">
+              <div class="letter-stamp">🎀 Postmarked With Love</div>
+              <h3 class="font-script letter-salutation">My Dearest Love,</h3>
+              <p class="letter-body font-handwriting">
+                Happy Birthday! Today isn't just a celebration of your birthday—it's a celebration of all the warmth, joy, laughter, and light you bring to my world.
+                <br><br>
+                Thank you for being my favorite notification, my comfort person, my endless laugh partner, and the sweetest part of every day. No gift in the world could ever match how much you mean to me, but I hope this little site reminds you of how deeply and truly you are loved.
+                <br><br>
+                Here is to celebrating you today, tomorrow, and every day that follows. 
+              </p>
+              <div class="letter-signoff font-script">
+                Forever yours,<br>
+                <span>Me 💕</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="envelope-flap" id="envelopeFlap"></div>
+          <div class="envelope-front"></div>
+          
+          <!-- Wax Seal Button -->
+          <div class="wax-seal" id="waxSeal" title="Click to open letter">
+            <span class="seal-heart">💖</span>
+            <span class="seal-hint">Click Me</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- SECTION 4: POLAROID SCRAPBOOK MEMORY GALLERY -->
+    <section class="section gallery-section" id="gallery">
+      <div class="section-header">
+        <span class="section-pill"><i class="fa-solid fa-camera"></i> Our Favorite Moments</span>
+        <h2 class="section-title font-bubble">Memory Scrapbook</h2>
+        <p class="section-sub">Hover or click on each polaroid snapshot</p>
+      </div>
+
+      <div class="polaroid-grid">
+        <!-- Polaroid 1 -->
+        <div class="polaroid-card tilt-left">
+          <div class="washi-tape tape-pink"></div>
+          <div class="polaroid-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=600&q=80" alt="Special memory" class="polaroid-img">
+            <div class="sparkle-overlay">✨</div>
+          </div>
+          <div class="polaroid-caption font-handwriting">The day you stole my heart 🧸</div>
+        </div>
+
+        <!-- Polaroid 2 -->
+        <div class="polaroid-card tilt-right">
+          <div class="washi-tape tape-yellow"></div>
+          <div class="polaroid-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=600&q=80" alt="Sunset memory" class="polaroid-img">
+            <div class="sparkle-overlay">🌸</div>
+          </div>
+          <div class="polaroid-caption font-handwriting">Golden sunsets & your laugh 🌅</div>
+        </div>
+
+        <!-- Polaroid 3 -->
+        <div class="polaroid-card tilt-straight">
+          <div class="washi-tape tape-pink"></div>
+          <div class="polaroid-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80" alt="Adventure memory" class="polaroid-img">
+            <div class="sparkle-overlay">✨</div>
+          </div>
+          <div class="polaroid-caption font-handwriting">Every adventure with you is magical 🍦</div>
+        </div>
+
+        <!-- Polaroid 4 -->
+        <div class="polaroid-card tilt-left">
+          <div class="washi-tape tape-pattern"></div>
+          <div class="polaroid-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=600&q=80" alt="Candid moment" class="polaroid-img">
+            <div class="sparkle-overlay">💖</div>
+          </div>
+          <div class="polaroid-caption font-handwriting">My favorite view will always be you 💫</div>
+        </div>
+      </div>
+      
+      <p class="gallery-tip"><i class="fa-solid fa-circle-info"></i> Tip: You can easily swap these images with your real photos!</p>
+    </section>
+
+
+    <!-- SECTION 5: 10 REASONS WHY I LOVE YOU -->
+    <section class="section reasons-section" id="reasons">
+      <div class="section-header">
+        <span class="section-pill"><i class="fa-solid fa-wand-magic-sparkles"></i> 10 Sweet Things</span>
+        <h2 class="section-title font-bubble">10 Reasons Why I Adore You</h2>
+        <p class="section-sub">Tap each card to flip and reveal the secret!</p>
+      </div>
+
+      <div class="reasons-grid">
+        <!-- Reason Cards (1 to 10) -->
+        <div class="flip-card">
+          <div class="flip-inner">
+            <div class="flip-front"><div class="reason-num">#1</div><span>Your Laugh</span><div class="card-icon">✨</div></div>
+            <div class="flip-back">It is literally the most contagious, heartwarming sound in the entire world.</div>
+          </div>
+        </div>
+
+        <div class="flip-card">
+          <div class="flip-inner">
+            <div class="flip-front"><div class="reason-num">#2</div><span>Your Kindness</span><div class="card-icon">🌸</div></div>
+            <div class="flip-back">The gentle, selfless way you treat everyone around you inspires me every day.</div>
+          </div>
+        </div>
+
+        <div class="flip-card">
+          <div class="flip-inner">
+            <div class="flip-front"><div class="reason-num">#3</div><span>Your Hugs</span><div class="card-icon">🧸</div></div>
+            <div class="flip-back">Your arms are instantly my safest place, melting away whatever stress I have.</div>
+          </div>
+        </div>
+
+        <div class="flip-card">
+          <div class="flip-inner">
+            <div class="flip-front"><div class="reason-num">#4</div><span>Your Eyes</span><div class="card-icon">👀</div></div>
+            <div class="flip-back">I swear I could get lost in your eyes for hours and still want more time.</div>
+          </div>
+        </div>
+
+        <div class="flip-card">
+          <div class="flip-inner">
+            <div class="flip-front"><div class="reason-num">#5</div><span>Our Inside Jokes</span><div class="card-icon">😂</div></div>
+            <div class="flip-back">How we can look at each other across the room and burst out laughing without a word.</div>
+          </div>
+        </div>
+
+        <div class="flip-card">
+          <div class="flip-inner">
+            <div class="flip-front"><div class="reason-num">#6</div><span>Your Passion</span><div class="card-icon">🔥</div></div>
+            <div class="flip-back">Watching you talk passionately about things you love makes you glow so brightly.</div>
+          </div>
+        </div>
+
+        <div class="flip-card">
+          <div class="flip-inner">
+            <div class="flip-front"><div class="reason-num">#7</div><span>Late Night Talks</span><div class="card-icon">🌙</div></div>
+            <div class="flip-back">Talking about everything and nothing until 2 AM never gets old with you.</div>
+          </div>
+        </div>
+
+        <div class="flip-card">
+          <div class="flip-inner">
+            <div class="flip-front"><div class="reason-num">#8</div><span>Your Patience</span><div class="card-icon">🎀</div></div>
+            <div class="flip-back">How understanding, patient, and sweet you are whenever I need reassurance.</div>
+          </div>
+        </div>
+
+        <div class="flip-card">
+          <div class="flip-inner">
+            <div class="flip-front"><div class="reason-num">#9</div><span>You Make Food Better</span><div class="card-icon">🍓</div></div>
+            <div class="flip-back">Eating takeout or cooking with you makes any meal feel like a 5-star date.</div>
+          </div>
+        </div>
+
+        <div class="flip-card">
+          <div class="flip-inner">
+            <div class="flip-front"><div class="reason-num">#10</div><span>Simply YOU</span><div class="card-icon">💖</div></div>
+            <div class="flip-back">Because nobody else in the universe could ever replace the one and only you.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- SECTION 6: INTERACTIVE MAKE-A-WISH BIRTHDAY CAKE -->
+    <section class="section cake-section" id="cake">
+      <div class="section-header">
+        <span class="section-pill"><i class="fa-solid fa-cake-candles"></i> Virtual Candle</span>
+        <h2 class="section-title font-bubble">Make A Birthday Wish!</h2>
+        <p class="section-sub">Close your eyes, think of your biggest wish, then blow out the candle 🎂</p>
+      </div>
+
+      <div class="cake-stage glass-panel">
+        <div class="cute-cake">
+          <div class="cake-candle" id="candle">
+            <div class="flame" id="candleFlame"></div>
+            <div class="smoke" id="candleSmoke"></div>
+          </div>
+          <div class="cake-layer cake-top">
+            <div class="frosting"></div>
+            <div class="strawberry s1">🍓</div>
+            <div class="strawberry s2">🍓</div>
+            <div class="strawberry s3">🍓</div>
+          </div>
+          <div class="cake-layer cake-middle">
+            <div class="cream-drip"></div>
+          </div>
+          <div class="cake-layer cake-bottom">
+            <div class="sprinkles"></div>
+          </div>
+          <div class="cake-plate"></div>
+        </div>
+
+        <div class="cake-action-wrap">
+          <button class="pink-glow-btn blow-btn" id="blowCandleBtn">
+            <i class="fa-solid fa-wind"></i>
+            <span>Blow Out Candle & Make a Wish!</span>
+          </button>
+          <div class="wish-message hidden" id="wishMsg">
+            🎉 <strong>WISH GRANTED!</strong> May all your sweetest dreams come true this year! 💖
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- SECTION 7: THE GRAND FINALE - WILL YOU GO ON A DATE WITH ME? -->
+    <section class="section finale-section" id="date-proposal">
+      <div class="finale-card glass-panel">
+        <div class="bow-header">🎀 THE MOST IMPORTANT QUESTION 🎀</div>
+        
+        <div class="cute-mascot" id="mascot">
+          <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExaG13M2p1b2R3eTh5eTV3MXh4am5xdW5jNXJkZGFxejM3dmt3bzN0YyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/cLS1cfxvGOPVpf9g3y/giphy.gif" alt="Cute jumping bunny" class="mascot-gif">
+        </div>
+
+        <h2 class="finale-title font-bubble">
+          Will you go on a date with me? 🥺👉👈
+        </h2>
+        
+        <p class="finale-desc font-sweet">
+          Dinner, your favorite dessert, and all the forehead kisses you want. What do you say?
+        </p>
+
+        <!-- Dynamic Escaping Button Area -->
+        <div class="proposal-arena" id="proposalArena">
+          <button class="btn-yes font-bubble" id="yesBtn">
+            YES! Absolutely! 💖
+          </button>
+          
+          <button class="btn-no font-bubble" id="noBtn">
+            No 💔
+          </button>
+        </div>
+
+        <div class="no-counter-hint" id="dodgeCountText">Try clicking "No"... if you can! 😜</div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <p class="font-romantic">Made with endless love, kisses & pink magic just for you ✨</p>
+      <div class="footer-icons">
+        <span>🎀</span><span>💖</span><span>🍓</span><span>🎂</span><span>💌</span>
+      </div>
+    </footer>
+
+  </div>
+
+
+  <!-- WINNING YES MODAL CELEBRATION -->
+  <dialog class="yes-modal" id="celebrationModal">
+    <div class="yes-modal-content">
+      <div class="confetti-cannon-icon">🎉</div>
+      <h2 class="font-bubble celebration-heading">YAAAY!! IT'S A DATE! 🥳💖</h2>
+      <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcnV0Mmp1dThmaGV6Z2VucTFtNGtvZWc5eXAzZms5eDVndTluamU4MSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/MDJ9IbxxvDUQM/giphy.gif" alt="Happy dancing cat" class="celebration-gif">
+      <p class="celebration-text font-sweet">
+        I knew you couldn't resist! Best decision ever! 🥰<br>
+        Dress cute, I'm picking you up and making it the most unforgettable day ever!
+      </p>
+      <div class="date-ticket glass-panel">
+        <div class="ticket-header">🎟️ VIP DATE PASS</div>
+        <div class="ticket-row"><strong>Date:</strong> <span>Whenever you want!</span></div>
+        <div class="ticket-row"><strong>Activity:</strong> <span>Food + Fun + Kisses</span></div>
+        <div class="ticket-row"><strong>Cost:</strong> <span>\$0.00 (My treat forever)</span></div>
+      </div>
+      <button class="pink-glow-btn close-modal-btn" id="closeModalBtn">
+        Can't wait! See you soon! 💕
+      </button>
+    </div>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>
