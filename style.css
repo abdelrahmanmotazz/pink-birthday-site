@@ -99,6 +99,18 @@ body {
   animation: shineText 4s linear infinite;
 }
 
+.title-heart {
+  display: inline-block;
+  -webkit-text-fill-color: initial !important;
+  background: none !important;
+  font-family: "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", sans-serif;
+  font-size: 3.8rem;
+  vertical-align: middle;
+  margin-left: 8px;
+  animation: pulseBeat 1.4s infinite;
+  filter: drop-shadow(0 4px 12px rgba(255, 20, 147, 0.45));
+}
+
 @keyframes shineText {
   to { background-position: 200% center; }
 }
