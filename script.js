@@ -1,17 +1,18 @@
 /* ==========================================================================
    PINK BIRTHDAY LOVE SITE - JAVASCRIPT INTERACTIONS 💕
+   Dedicated from Husband to Tota
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
 
   // ------------------------------------------------------------------------
-  // 1. CONFIGURATION (Customize easily here!)
+  // 1. CONFIGURATION
   // ------------------------------------------------------------------------
   const CONFIG = {
-    // Set your anniversary or special date (YYYY-MM-DD or full timestamp)
-    relationshipStartDate: new Date('2024-01-01T00:00:00'),
-    // Birthday person's name
-    partnerName: 'My Beautiful Princess 💕',
+    // Relationship started on October 10, 2026
+    relationshipStartDate: new Date('2026-10-10T00:00:00'),
+    partnerName: 'Tota 💕',
+    senderName: 'Husband'
   };
 
   // ------------------------------------------------------------------------
@@ -33,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
         vinylDisc.classList.add('spinning');
         playIcon.className = 'fa-solid fa-pause';
       }).catch(err => {
-        console.log('Audio autoplay prevented:', err);
+        console.log('Audio playback notice:', err);
       });
     } else {
       bgMusic.pause();
@@ -45,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   playBtn.addEventListener('click', toggleAudio);
 
-  // Entrance button triggers audio & burst
+  // Entrance button triggers audio & celebratory confetti
   enterSiteBtn.addEventListener('click', () => {
     entranceModal.classList.add('hidden');
     bgMusic.play().then(() => {
@@ -53,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
       vinylDisc.classList.add('spinning');
       playIcon.className = 'fa-solid fa-pause';
     }).catch(err => {
-      console.log('Autoplay policy caught:', err);
+      console.log('Autoplay policy notice:', err);
     });
 
     // Welcome Confetti Burst
@@ -68,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   window.addEventListener('mousemove', (e) => {
     const now = Date.now();
-    // Throttle particle creation to 50ms for buttery performance
+    // Throttle to 50ms for performance
     if (now - lastParticleTime > 50) {
       lastParticleTime = now;
       createCursorParticle(e.clientX, e.clientY);
@@ -82,7 +83,6 @@ document.addEventListener('DOMContentLoaded', () => {
     particle.style.left = `${x}px`;
     particle.style.top = `${y}px`;
     
-    // Slight random offset
     const randomRotate = (Math.random() - 0.5) * 40;
     particle.style.transform = `translate(-50%, -50%) rotate(${randomRotate}deg)`;
 
@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   for (let i = 0; i < 28; i++) {
     const heart = new FloatingHeart();
-    heart.y = Math.random() * height; // initial spread
+    heart.y = Math.random() * height;
     particles.push(heart);
   }
 
@@ -153,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
   animateCanvas();
 
   // ------------------------------------------------------------------------
-  // 5. RELATIONSHIP LOVE CLOCK COUNTER
+  // 5. RELATIONSHIP LOVE CLOCK COUNTER (Since 10/10/2026)
   // ------------------------------------------------------------------------
   const daysElem = document.getElementById('daysCount');
   const hoursElem = document.getElementById('hoursCount');
@@ -162,7 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function updateLoveClock() {
     const now = new Date();
-    const diff = now - CONFIG.relationshipStartDate;
+    const diff = Math.max(0, now - CONFIG.relationshipStartDate);
 
     const seconds = Math.floor((diff / 1000) % 60);
     const minutes = Math.floor((diff / (1000 * 60)) % 60);
@@ -179,7 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
   updateLoveClock();
 
   // ------------------------------------------------------------------------
-  // 6. INTERACTIVE WAX-SEALED ENVELOPE
+  // 6. INTERACTIVE WAX-SEALED ENVELOPE (Tota's Letter)
   // ------------------------------------------------------------------------
   const waxSeal = document.getElementById('waxSeal');
   const envelope = document.getElementById('envelope');
@@ -192,17 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ------------------------------------------------------------------------
-  // 7. 10 REASONS FLIP CARDS (Touch & Click Support)
-  // ------------------------------------------------------------------------
-  const flipCards = document.querySelectorAll('.flip-card');
-  flipCards.forEach(card => {
-    card.addEventListener('click', () => {
-      card.classList.toggle('flipped');
-    });
-  });
-
-  // ------------------------------------------------------------------------
-  // 8. MAKE-A-WISH BIRTHDAY CAKE & CANDLE
+  // 7. MAKE-A-WISH BIRTHDAY CAKE & CANDLE
   // ------------------------------------------------------------------------
   const blowBtn = document.getElementById('blowCandleBtn');
   const candleFlame = document.getElementById('candleFlame');
@@ -217,16 +207,15 @@ document.addEventListener('DOMContentLoaded', () => {
       blowBtn.innerHTML = '✨ Wish Made! Tap to Relight 🎂';
       fireGrandConfetti();
     } else {
-      // Relight candle
       candleFlame.classList.remove('out');
       candleSmoke.classList.remove('puff');
       wishMsg.classList.add('hidden');
-      blowBtn.innerHTML = '<i class="fa-solid fa-wind"></i> <span>Blow Out Candle & Make a Wish!</span>';
+      blowBtn.innerHTML = '<i class="fa-solid fa-wind"></i> <span>Blow Candle & Make A Wish, Tota!</span>';
     }
   });
 
   // ------------------------------------------------------------------------
-  // 9. THE EVASIVE "NO" BUTTON & GROWING "YES" BUTTON
+  // 8. THE EVASIVE "NO" BUTTON & GROWING "YES" BUTTON
   // ------------------------------------------------------------------------
   const noBtn = document.getElementById('noBtn');
   const yesBtn = document.getElementById('yesBtn');
@@ -236,16 +225,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const closeModalBtn = document.getElementById('closeModalBtn');
 
   const playfulPhrases = [
-    "Nice try! 😜",
+    "Nice try, Tota! 😜",
     "Too slow! 💨",
     "Not an option! 💖",
-    "Hehe you can't click me! 🎀",
-    "Think again! 🥺",
+    "Husband won't let you! 🎀",
+    "Think again, my love! 🥺",
     "Wrong button darling! 🌸",
     "Error 404: No not found! ❌",
     "Just press YES already! 🥰",
-    "I won't let you! 🏃‍♀️💨",
-    "Destiny says YES! ✨"
+    "Destiny says YES to Husband! ✨"
   ];
 
   let dodgeCount = 0;
@@ -254,23 +242,20 @@ document.addEventListener('DOMContentLoaded', () => {
   function dodgeButton() {
     dodgeCount++;
     
-    // Playful text change on NO button
     const phrase = playfulPhrases[dodgeCount % playfulPhrases.length];
     noBtn.innerText = phrase;
     
     if (dodgeCountText) {
-      dodgeCountText.innerText = `You've tried saying no ${dodgeCount} time${dodgeCount === 1 ? '' : 's'}... but my love is unstoppable! 💕`;
+      dodgeCountText.innerText = `You've tried saying no ${dodgeCount} time${dodgeCount === 1 ? '' : 's'}... but Husband's love is unstoppable! 💕`;
     }
 
     // Make YES button grow bigger each time NO is attempted
     yesScale += 0.08;
     yesBtn.style.transform = `scale(${yesScale})`;
 
-    // Get arena boundaries
     const arenaRect = arena.getBoundingClientRect();
     const btnRect = noBtn.getBoundingClientRect();
 
-    // Determine random target offset within container
     const maxOffsetX = (arenaRect.width / 2) - (btnRect.width / 2) - 10;
     const maxOffsetY = 110;
 
@@ -282,25 +267,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Hover triggers dodge
   noBtn.addEventListener('mouseenter', dodgeButton);
-  // Touch on mobile triggers dodge
+  // Touch triggers dodge on mobile
   noBtn.addEventListener('touchstart', (e) => {
     e.preventDefault();
     dodgeButton();
   });
-  // In case of rapid click
   noBtn.addEventListener('click', (e) => {
     e.preventDefault();
     dodgeButton();
   });
 
   // ------------------------------------------------------------------------
-  // 10. "YES!" BUTTON CELEBRATION
+  // 9. "YES!" BUTTON CELEBRATION
   // ------------------------------------------------------------------------
   yesBtn.addEventListener('click', () => {
-    // Massive celebration fireworks & confetti!
     fireGrandConfetti();
     
-    // Open date pass modal
     if (typeof celebrationModal.showModal === 'function') {
       celebrationModal.showModal();
     } else {
@@ -313,7 +295,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ------------------------------------------------------------------------
-  // 11. CONFETTI GENERATORS (Canvas Confetti)
+  // 10. CONFETTI GENERATORS
   // ------------------------------------------------------------------------
   function fireHeartConfetti() {
     if (typeof confetti !== 'function') return;
