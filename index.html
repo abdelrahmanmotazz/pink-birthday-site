@@ -37,10 +37,9 @@
     </button>
   </div>
 
-  <!-- Audio Element with Fallback Vintage Stream & Local File Option -->
-  <audio id="bgMusic" loop preload="auto">
+  <!-- Audio Element (Direct Local File for Instant Mobile Playback) -->
+  <audio id="bgMusic" preload="auto" playsinline webkit-playsinline loop src="assets/be-my-baby.mp3">
     <source src="assets/be-my-baby.mp3" type="audio/mpeg">
-    <source src="https://ia800903.us.archive.org/11/items/the-ronettes-be-my-baby/The%20Ronettes%20-%20Be%20My%20Baby.mp3" type="audio/mpeg">
     Your browser does not support audio playback.
   </audio>
 

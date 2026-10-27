@@ -27,39 +27,54 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let isPlaying = false;
 
-  function toggleAudio() {
-    if (bgMusic.paused) {
-      bgMusic.play().then(() => {
+  function playAudio() {
+    bgMusic.muted = false;
+    const playPromise = bgMusic.play();
+    if (playPromise !== undefined) {
+      playPromise.then(() => {
         isPlaying = true;
         vinylDisc.classList.add('spinning');
         playIcon.className = 'fa-solid fa-pause';
       }).catch(err => {
-        console.log('Audio playback notice:', err);
+        console.warn('Playback notice:', err);
+        isPlaying = false;
+        vinylDisc.classList.remove('spinning');
+        playIcon.className = 'fa-solid fa-play';
       });
+    }
+  }
+
+  function pauseAudio() {
+    bgMusic.pause();
+    isPlaying = false;
+    vinylDisc.classList.remove('spinning');
+    playIcon.className = 'fa-solid fa-play';
+  }
+
+  function toggleAudio() {
+    if (bgMusic.paused) {
+      playAudio();
     } else {
-      bgMusic.pause();
-      isPlaying = false;
-      vinylDisc.classList.remove('spinning');
-      playIcon.className = 'fa-solid fa-play';
+      pauseAudio();
     }
   }
 
   playBtn.addEventListener('click', toggleAudio);
+  vinylDisc.addEventListener('click', toggleAudio);
 
-  // Entrance button triggers audio & celebratory confetti
-  enterSiteBtn.addEventListener('click', () => {
+  // Entrance button triggers audio & celebratory confetti (works on iOS & Android touch)
+  function handleEnter(e) {
     entranceModal.classList.add('hidden');
-    bgMusic.play().then(() => {
-      isPlaying = true;
-      vinylDisc.classList.add('spinning');
-      playIcon.className = 'fa-solid fa-pause';
-    }).catch(err => {
-      console.log('Autoplay policy notice:', err);
-    });
-
-    // Welcome Confetti Burst
+    try {
+      bgMusic.load();
+      playAudio();
+    } catch (err) {
+      console.warn('Audio init error:', err);
+    }
     fireHeartConfetti();
-  });
+  }
+
+  enterSiteBtn.addEventListener('click', handleEnter);
 
   // ------------------------------------------------------------------------
   // 3. HEART-SHAPED CURSOR TRAIL PARTICLES
