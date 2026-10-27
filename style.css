@@ -776,8 +776,9 @@ body {
 .polaroid-img-wrapper {
   position: relative;
   width: 100%;
-  height: 250px;
-  border-radius: 4px;
+  aspect-ratio: 3 / 4;
+  min-height: 310px;
+  border-radius: 6px;
   overflow: hidden;
   background: #ffe4f0;
 }
@@ -786,7 +787,25 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 15%;
   transition: transform 0.5s ease;
+}
+
+/* Individual framing adjustments so both always appear completely */
+.img-night-promenade {
+  object-position: center 25%;
+}
+
+.img-coffee-selfie {
+  object-position: center 5%;
+}
+
+.img-car-ride {
+  object-position: center 40%;
+}
+
+.img-blue-shirts {
+  object-position: center 5%;
 }
 
 .polaroid-card:hover .polaroid-img {
