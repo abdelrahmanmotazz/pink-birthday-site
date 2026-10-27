@@ -9,8 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // 1. CONFIGURATION
   // ------------------------------------------------------------------------
   const CONFIG = {
-    // Relationship started on October 10, 2026
-    relationshipStartDate: new Date('2026-10-10T00:00:00'),
+    // Relationship started on October 12, 2026
+    relationshipStartDate: new Date('2026-10-12T00:00:00'),
     partnerName: 'Tota 💕',
     senderName: 'Husband'
   };
